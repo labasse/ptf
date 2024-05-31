@@ -1,0 +1,33 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {
+      "VARIANT": "3.11" // Set Python version here
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.github-vscode-theme",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "jebbs.plantuml",
+        "alexcvzz.vscode-sqlite",
+        "arjun.swagger-viewer"
+      ]
+    }
+  },
+  "portsAttributes": {
+    "5000": {
+      "label": "Application",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "onCreateCommand": "echo PS1='\"$ \"' >> ~/.bashrc",
+  "postAttachCommand": "git pull --all",
+  "forwardPorts": [
+    5000
+  ]
+}
+// DevContainer Reference: https://code.visualstudio.com/docs/remote/devcontainerjson-reference
